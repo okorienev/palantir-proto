@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package palantir.apm.v1.action;
+
+import "shared/tag.proto";
+import "shared/measurement.proto";
+
+message ApmV1Action {
+  // some required dimensions
+  string realm = 1;  // k8s namespace or similar
+  string application = 2;  // k8s deployment/stateful set or similar
+  string application_hash = 3;  // k8s pod hash or similar
+  string action_kind = 4;  // e.g http, grpc, graphql, cronjob
+  string action_name = 5;  // e.g controllers.cabinet.auth, ContextQuery
+
+  uint64 total_us = 6;  // amount of microseconds that action took  
+  
+  // e.g 3 queries to postgres which took 300ms and 2 queries to redis which took 10ms
+  repeated palantir.shared.measurement.Measurement measurements = 7;
+  repeated palantir.shared.tag.Tag additionalDimensions = 8;  // e.g. success/error, http response code
+}
