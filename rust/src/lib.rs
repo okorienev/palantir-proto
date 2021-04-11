@@ -1,3 +1,5 @@
+pub use prost::bytes;
+
 pub mod palantir {
     pub mod apm {
         pub mod v1 {
@@ -24,6 +26,7 @@ mod tests {
     use super::palantir::apm::v1::action::ApmV1Action;
     use super::palantir::shared::measurement::Measurement;
     use super::palantir::shared::tag::Tag;
+    use super::palantir::request::Request;
     use prost::bytes::BytesMut;
     use prost::Message;
 
