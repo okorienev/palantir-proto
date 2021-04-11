@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package palantir.request;
+
+import "apm/v1/action.proto";
+
+
+message Request {
+  oneof message {
+    palantir.apm.v1.action.ApmV1Action apm_v1_action = 1;
+  }
+}

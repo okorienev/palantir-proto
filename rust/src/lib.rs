@@ -14,6 +14,9 @@ pub mod palantir {
             include!(concat!(env!("OUT_DIR"), "/palantir.shared.tag.rs"));
         }
     }
+    pub mod request {
+        include!(concat!(env!("OUT_DIR"), "/palantir.request.rs"));
+    }
 }
 
 #[cfg(test)]
