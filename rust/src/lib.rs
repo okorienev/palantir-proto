@@ -1,4 +1,4 @@
-pub use prost::bytes;
+pub use prost;
 
 pub mod palantir {
     pub mod apm {
@@ -24,9 +24,9 @@ pub mod palantir {
 #[cfg(test)]
 mod tests {
     use super::palantir::apm::v1::action::ApmV1Action;
+    use super::palantir::request::Request;
     use super::palantir::shared::measurement::Measurement;
     use super::palantir::shared::tag::Tag;
-    use super::palantir::request::Request;
     use prost::bytes::BytesMut;
     use prost::Message;
 
