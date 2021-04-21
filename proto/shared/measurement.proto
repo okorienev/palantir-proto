@@ -5,6 +5,5 @@ package palantir.shared.measurement;
 
 message Measurement {
   string name = 1;  // e.g. postgres,redis,kafka
-  uint32 hits = 2;  // amount of times measurement occurred during action
-  uint64 total_us = 3;  // total time in microseconds
+  uint64 took_us = 3;  // time in microseconds
 }
