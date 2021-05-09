@@ -1,0 +1,23 @@
+shell: bash
+
+env:
+  PROTO_SOURCE: proto
+  PYTHON_OUT: python/src
+
+eval_env:
+  PROTOC: echo `which protoc`
+  SOURCES: echo `find ${PROTO_SOURCE} -type f -name "*.proto"`
+
+commands:
+  build-rust:
+    cmd: |
+      cd rust
+      cargo build
+      cd ..
+
+  build-python:
+    cmd: |
+      for source_file in ${SOURCES}
+      do
+        ${PROTOC} ${source_file} -I=${PROTO_SOURCE} --python_out=${PYTHON_OUT}
+      done
